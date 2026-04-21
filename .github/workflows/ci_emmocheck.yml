@@ -1,14 +1,14 @@
-name: Check conventions
+name: CI tests
 on: [push]
 
 jobs:
 
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     strategy:
       max-parallel: 1
       matrix:
-        python-version: [3.11]
+        python-version: [3.14]
 
     steps:
     - uses: actions/checkout@v4
@@ -21,14 +21,15 @@ jobs:
     - name: Install EMMOntoPy
       run: |
         pip install --upgrade pip
-        pip install EMMOntoPy
+        #pip install EMMOntoPy
+        pip install git+https://github.com/emmo-repo/EMMOntoPy.git@master
 
     - name: Check EMMO
       run: |
         emmocheck --local --url-from-catalog --verbose --check-imported \
           --configfile=.github/emmocheck_conf.yml  emmo.ttl
 
-    - name: Check EMMO-full
+    - name: Check EMAX
       run: |
         emmocheck --local --url-from-catalog --verbose --check-imported \
-          --configfile=.github/emmocheck_conf.yml  emmo-full.ttl
+          --configfile=.github/emmocheck_conf.yml  emax.ttl

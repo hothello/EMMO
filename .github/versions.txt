@@ -1,8 +1,13 @@
-1.0.0-rc1      development
+dev            development
+1.0.1          stable
+1.0.0
+1.0.0-rc3
+1.0.0-rc2
+1.0.0-rc1
 1.0.0-beta7
 1.0.0-beta6
 1.0.0-beta5
-1.0.0-beta4    stable
+1.0.0-beta4
 1.0.0-beta3
 1.0.0-beta2
 1.0.0-beta

@@ -5,39 +5,54 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix schema: <https://schema.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @base <https://w3id.org/emmo#> .
 
 <https://w3id.org/emmo/disciplines/metrology> rdf:type owl:Ontology ;
-                                               owl:versionIRI <https://w3id.org/emmo/1.0.0-rc1/disciplines/metrology> ;
-                                               owl:imports <https://w3id.org/emmo/1.0.0-rc1/disciplines/math> ,
-                                                           <https://w3id.org/emmo/1.0.0-rc1/multiperspective/persholistic> ,
-                                                           <https://w3id.org/emmo/1.0.0-rc1/multiperspective/properties> ,
-                                                           <https://w3id.org/emmo/1.0.0-rc1/multiperspective/symbolic> ,
-                                                           <https://w3id.org/emmo/1.0.0-rc1/multiperspective/workflow> ;
+                                               owl:versionIRI <https://w3id.org/emmo/1.0.3/disciplines/metrology> ;
+                                               owl:imports <https://w3id.org/emmo/1.0.3/disciplines/math> ,
+                                                           <https://w3id.org/emmo/1.0.3/disciplines/properties> ,
+                                                           <https://w3id.org/emmo/1.0.3/reference/persholistic> ,
+                                                           <https://w3id.org/emmo/1.0.3/reference/symbolic> ,
+                                                           <https://w3id.org/emmo/1.0.3/reference/workflow> ;
                                                dcterms:abstract """Defines the formal language of metrology, including theoretical and practical aspects of measurements.
 
 This module is based on the International vocabulary of metrology (VIM) as well as the ISO/IEC 80000 standard."""@en ;
-                                               dcterms:creator <https://orcid.org/0000-0002-1560-809X> ,
+                                               dcterms:creator <https://orcid.org/0000-0003-3805-8761> ,
                                                                <https://orcid.org/0000-0002-4181-2852> ,
-                                                               <https://orcid.org/0000-0003-0514-9229> ,
-                                                               <https://orcid.org/0000-0003-3805-8761> ,
-                                                               <https://orcid.org/0000-0003-4065-9742> ;
+                                                               <https://orcid.org/0000-0002-1560-809X> ,
+                                                               <https://orcid.org/0000-0002-8758-6109> ;
                                                dcterms:license "https://creativecommons.org/licenses/by/4.0/legalcode" ;
                                                dcterms:publisher <https://emmc.eu> ;
                                                dcterms:title "Metrology"@en ;
                                                rdfs:comment "The EMMO requires HermiT reasoner plugin in order to visualize all inferences and class hierarchy (ctrl+R hotkey in Protege)."@en ;
-                                               owl:versionInfo "1.0.0-rc1" ;
+                                               owl:versionInfo "1.0.3" ;
                                                :EMMO_1246b120_abbe_4840_b0f8_3e4348b24a17 "emmo@emmc.eu" .
 
 #################################################################
 #    Annotation properties
 #################################################################
 
+###  https://schema.org/unitCode
+schema:unitCode rdf:type owl:AnnotationProperty ;
+                rdfs:seeAlso "The normative list of all codes is available at http://www.unece.org/fileadmin/DAM/cefact/recommendations/rec20/rec20_Rev9e_2014.xls"@en ,
+                             "https://schema.org/unitCode" ;
+                :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL."@en ;
+                :EMMO_c7b62dd7_063a_4c2a_8504_42f7264ba83f "Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon."@en ,
+                                                           "The UN/CEFACT Recommendation 20 provides three character alphabetic and alphanumeric codes for representing units of measurement for length, area, volume/capacity, mass (weight), time, and other quantities used in international trade. The codes are intended for use in manual and/or automated systems for the exchange of information between participants in international trade."@en ;
+                rdfs:subPropertyOf :EMMO_58e7c821_4af0_4394_89f7_a9649735f4d2 ;
+                rdfs:range xsd:string ;
+                rdfs:domain :EMMO_b081b346_7279_46ef_9a3d_2c088fcd79f4 .
+
+
 ###  https://w3id.org/emmo#EMMO_0b1cbe60_d380_4787_b92e_be26bdacf2c2
 :EMMO_0b1cbe60_d380_4787_b92e_be26bdacf2c2 rdf:type owl:AnnotationProperty ;
+                                           owl:deprecated "true"^^xsd:boolean ;
+                                           owl:versionInfo "Replaced by schema:unitCode"@en ;
                                            skos:prefLabel "uneceCommonCode"@en ;
-                                           :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "The UN/CEFACT Recommendation 20 provides three character alphabetic and alphanumeric codes for representing units of measurement for length, area, volume/capacity, mass (weight), time, and other quantities used in international trade. The codes are intended for use in manual and/or automated systems for the exchange of information between participants in international trade."@en ;
+                                           :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL."@en ;
+                                           :EMMO_c7b62dd7_063a_4c2a_8504_42f7264ba83f "The UN/CEFACT Recommendation 20 provides three character alphabetic and alphanumeric codes for representing units of measurement for length, area, volume/capacity, mass (weight), time, and other quantities used in international trade. The codes are intended for use in manual and/or automated systems for the exchange of information between participants in international trade."@en ;
                                            rdfs:subPropertyOf :EMMO_58e7c821_4af0_4394_89f7_a9649735f4d2 ;
                                            rdfs:range xsd:string ;
                                            rdfs:domain :EMMO_b081b346_7279_46ef_9a3d_2c088fcd79f4 .
@@ -97,6 +112,22 @@ This module is based on the International vocabulary of metrology (VIM) as well 
 
 
 #################################################################
+#    Datatypes
+#################################################################
+
+###  https://w3id.org/emmo#EMMO_799c067b_083f_4365_9452_1f1433b03676
+:EMMO_799c067b_083f_4365_9452_1f1433b03676 rdf:type rdfs:Datatype ;
+                                           skos:example "\"3 cm\""@en ,
+                                                        """A more complete example showing how to specify the value of a physical quantity in turtle using this datatype:
+
+    height1 a emmo:Height ;
+        hasSIQuantityValue \"3 cm\"^^emmo:SIQuantityDatatype ."""@en ;
+                                           skos:prefLabel "SIQuantityDatatype"@en ;
+                                           :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "A datatype for a specifying a physcial quantity as a string consisting of a numerical, a separator and an SI unit."@en ;
+                                           :EMMO_c7b62dd7_063a_4c2a_8504_42f7264ba83f "The unit should be a valid, possible prefixed, derived SI unit."@en .
+
+
+#################################################################
 #    Object Properties
 #################################################################
 
@@ -132,9 +163,10 @@ The quantity is selected without an observation aimed to measure its actual valu
 ###  https://w3id.org/emmo#EMMO_5d73661e_e710_4844_ab9b_a85b7e68576a
 :EMMO_5d73661e_e710_4844_ab9b_a85b7e68576a rdf:type owl:ObjectProperty ;
                                            rdfs:subPropertyOf :EMMO_b2282816_b7a3_44c6_b2cb_3feff1ceb7fe ;
-                                           rdfs:range :EMMO_0650c031_42b6_4f0a_b62d_d88f071da6bf ;
-                                           skos:prefLabel "hasQuantity"@en ;
-                                           :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Relates the result of a semiotic process to ont of its optained quantities."@en .
+                                           rdfs:domain :EMMO_0f6f0120_c079_4d95_bb11_4ddee05e530e ;
+                                           rdfs:range :EMMO_f658c301_ce93_46cf_9639_4eace2c5d1d5 ;
+                                           skos:prefLabel "hasQuantityValuePart"@en ;
+                                           :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Relates a measurement result to one of its quantity value parts."@en .
 
 
 ###  https://w3id.org/emmo#EMMO_662c64e7_fc72_49b3_a161_f50fd42deafa
@@ -156,7 +188,7 @@ The quantity is selected without an observation aimed to measure its actual valu
                                            rdfs:domain :EMMO_0650c031_42b6_4f0a_b62d_d88f071da6bf ;
                                            rdfs:range :EMMO_18ce5200_00f5_45bb_8c6f_6fb128cd41ae ;
                                            rdfs:comment "Relates a quantity to its metrological reference through a semiotic process."@en ;
-                                           owl:versionInfo """In EMMO version 1.0.0-rc1, physical quantities used the hasMetrologicalReference object property to relate them to their units via physical dimensionality. This was simplified in 1.0.0-alpha3 in order to make reasoning faster.
+                                           owl:versionInfo """In EMMO version 1.0.0, physical quantities used the hasMetrologicalReference object property to relate them to their units via physical dimensionality. This was simplified in 1.0.0-alpha3 in order to make reasoning faster.
 
 The restriction (e.g. for the physical quantity Length)
 
@@ -188,6 +220,24 @@ The label of this class was also changed from PhysicsDimension to PhysicalDimens
                                            :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Relates a prefixed unit to its non-prefixed part."@en .
 
 
+###  https://w3id.org/emmo#EMMO_802b7639_9498_4b47_ad45_1a087fe8fb85
+:EMMO_802b7639_9498_4b47_ad45_1a087fe8fb85 rdf:type owl:ObjectProperty ;
+                                           rdfs:subPropertyOf :EMMO_9e3ad976_b179_4315_b51e_7e874df583dc ;
+                                           rdfs:domain :EMMO_10a5fd39_06aa_4648_9e70_f962a9cb2069 ;
+                                           rdfs:range :EMMO_b7bcff25_ffc3_474e_9ab5_01b1664bd4ba ;
+                                           skos:prefLabel "hasDeterminedProperty"@en ;
+                                           :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Relates a semiotic determination process to the determined property."@en .
+
+
+###  https://w3id.org/emmo#EMMO_88b84515_a0df_47bb_8166_c7c8b893c1d8
+:EMMO_88b84515_a0df_47bb_8166_c7c8b893c1d8 rdf:type owl:ObjectProperty ;
+                                           rdfs:subPropertyOf :EMMO_eb3518bf_f799_4f9e_8c3e_ce59af11453b ;
+                                           rdfs:domain :EMMO_0650c031_42b6_4f0a_b62d_d88f071da6bf ;
+                                           rdfs:range :EMMO_f658c301_ce93_46cf_9639_4eace2c5d1d5 ;
+                                           skos:prefLabel "hasQuantityValue"@en ;
+                                           :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "A conventional relation that relates a quantity to its quantity value."@en .
+
+
 ###  https://w3id.org/emmo#EMMO_8ef3cd6d_ae58_4a8d_9fc0_ad8f49015cd0
 :EMMO_8ef3cd6d_ae58_4a8d_9fc0_ad8f49015cd0 rdf:type owl:ObjectProperty ;
                                            rdfs:subPropertyOf :EMMO_b2282816_b7a3_44c6_b2cb_3feff1ceb7fe ;
@@ -198,6 +248,31 @@ The label of this class was also changed from PhysicsDimension to PhysicalDimens
                                            rdfs:range :EMMO_4ce76d7f_03f8_45b6_9003_90052a79bfaa ;
                                            rdfs:comment "Relates a quantity to its numerical value through spatial direct parthood."@en ;
                                            skos:prefLabel "hasNumericalPart"@en .
+
+
+###  https://w3id.org/emmo#EMMO_963b7cf2_3358_463e_86fa_2e8ef00704d9
+:EMMO_963b7cf2_3358_463e_86fa_2e8ef00704d9 rdf:type owl:ObjectProperty ;
+                                           rdfs:subPropertyOf :EMMO_9e3ad976_b179_4315_b51e_7e874df583dc ;
+                                           rdfs:domain :EMMO_10a5fd39_06aa_4648_9e70_f962a9cb2069 ;
+                                           rdfs:range :EMMO_f658c301_ce93_46cf_9639_4eace2c5d1d5 ;
+                                           skos:prefLabel "hasDeterminedValue"@en ;
+                                           :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Relates a determination to a determined quantity value."@en .
+
+
+###  https://w3id.org/emmo#EMMO_a97351bc_1b1b_4157_95b7_0a60ac56b8e2
+:EMMO_a97351bc_1b1b_4157_95b7_0a60ac56b8e2 rdf:type owl:ObjectProperty ;
+                                           rdfs:subPropertyOf :EMMO_55375713_8f92_473b_a688_b7fcc14f7797 ;
+                                           owl:inverseOf :EMMO_eb3518bf_f799_4f9e_8c3e_ce59af11453b ;
+                                           skos:prefLabel "isQuantityValueFor"@en .
+
+
+###  https://w3id.org/emmo#EMMO_ae081613_1d3a_49af_ba03_7195fcc9ebba
+:EMMO_ae081613_1d3a_49af_ba03_7195fcc9ebba rdf:type owl:ObjectProperty ;
+                                           rdfs:subPropertyOf :EMMO_8fb6d667_f2af_482d_97a9_ec97cd81274d ;
+                                           rdfs:domain :EMMO_463bcfda_867b_41d9_a967_211d4d437cfb ;
+                                           rdfs:range :EMMO_6f5af708_f825_4feb_a0d1_a8d813d3022b ;
+                                           skos:prefLabel "hasMeasuredObject"@en ;
+                                           :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Relates a measurement to the measured object (referent)."@en .
 
 
 ###  https://w3id.org/emmo#EMMO_b8f79e53_2ad4_441d_87ff_284a5c419e46
@@ -245,18 +320,43 @@ The label of this class was also changed from PhysicsDimension to PhysicalDimens
 
 
 #################################################################
+#    Data properties
+#################################################################
+
+###  https://w3id.org/emmo#EMMO_42806efc_581b_4ff8_81b0_b4d62153458b
+:EMMO_42806efc_581b_4ff8_81b0_b4d62153458b rdf:type owl:DatatypeProperty ;
+                                           rdfs:subPropertyOf owl:topDataProperty ;
+                                           rdfs:domain :EMMO_02c0621e_a527_4790_8a0f_2bb51973c819 ;
+                                           rdfs:range :EMMO_799c067b_083f_4365_9452_1f1433b03676 ;
+                                           skos:example """Example showing how to specify the value of a physical quantity in turtle using hasSIQuantityValue:
+
+    height1 a emmo:Height ;
+        hasSIQuantityValue \"3 cm\"^^emmo:SIQuantityDatatype ."""@en ;
+                                           skos:prefLabel "hasSIQuantityValue"@en ;
+                                           :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Relates a physical quantity to its value specified as a string consisting of a numerical, a separator and a unit."@en ;
+                                           :EMMO_c7b62dd7_063a_4c2a_8504_42f7264ba83f """Using hasSIQuantityValue is a convenient, but less semantic, alternative to specify value and unit of a physical quantity compared to using the 'hasNumericalPart' and 'hasReferencePart'/'hasMetrologicalReference' relations.
+
+The unit should be a valid, possible prefixed, derived SI unit."""@en .
+
+
+###  https://w3id.org/emmo#EMMO_daf7a9b7_18ef_4e73_9fb9_75adfd9800e8
+:EMMO_daf7a9b7_18ef_4e73_9fb9_75adfd9800e8 rdf:type owl:DatatypeProperty ;
+                                           rdfs:subPropertyOf :EMMO_23b579e1_8088_45b5_9975_064014026c42 ;
+                                           rdfs:domain :EMMO_216f448e_cdbc_4aeb_a529_7a5fe7fc38bb ;
+                                           skos:prefLabel "unitSymbolValue"@en .
+
+
+#################################################################
 #    Classes
 #################################################################
 
 ###  https://w3id.org/emmo#EMMO_02c0621e_a527_4790_8a0f_2bb51973c819
 :EMMO_02c0621e_a527_4790_8a0f_2bb51973c819 rdf:type owl:Class ;
-                                           rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                           rdfs:subClassOf :EMMO_dbbbf0ed_a446_4f9e_877c_8c46e7842f43 ,
+                                                           [ rdf:type owl:Restriction ;
                                                              owl:onProperty :EMMO_67fc0a36_8dcb_4ffa_9a43_31074efa3296 ;
                                                              owl:allValuesFrom :EMMO_b081b346_7279_46ef_9a3d_2c088fcd79f4
                                                            ] ;
-                                           owl:disjointUnionOf ( :EMMO_71f6ab56_342c_484b_bbe0_de86b7367cb3
-                                                                 :EMMO_acaaa124_3dde_48b6_86e6_6ec6f364f408
-                                                               ) ;
                                            rdfs:comment """In the same system of quantities, dim ρB = ML−3 is the quantity dimension of mass concentration of component B, and ML−3 is also the quantity dimension of mass density, ρ.
 ISO 80000-1"""@en ,
                                                         """Measured or simulated 'physical propertiy'-s are always defined by a physical law, connected to a physical entity through a model perspective and measurement is done according to the same model.
@@ -276,31 +376,26 @@ As another example, the joule (J) is used as a unit of energy, but never as a un
 — quantities having the same quantity dimension are not necessarily of the same kind.
 ISO 80000-1"""@en ;
                                            skos:prefLabel "PhysicalQuantity"@en ;
+                                           :EMMO_8a137e9f_579c_4e28_baca_e8980eb0c3db "DisjointUnionOf: DerivedQuantity, BaseQuantity" ;
                                            :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "A 'Mathematical' entity that is made of a 'Numeral' and a 'MeasurementUnit' defined by a physical law, connected to a physical entity through a model perspective. Measurement is done according to the same model."@en .
 
 
 ###  https://w3id.org/emmo#EMMO_0650c031_42b6_4f0a_b62d_d88f071da6bf
 :EMMO_0650c031_42b6_4f0a_b62d_d88f071da6bf rdf:type owl:Class ;
-                                           owl:equivalentClass [ rdf:type owl:Class ;
-                                                                 owl:unionOf ( :EMMO_02c0621e_a527_4790_8a0f_2bb51973c819
-                                                                               :EMMO_c46f091c_0420_4c1a_af30_0a2c8ebcf7d7
-                                                                             )
-                                                               ] ;
                                            rdfs:subClassOf :EMMO_b7bcff25_ffc3_474e_9ab5_01b1664bd4ba ,
                                                            [ rdf:type owl:Restriction ;
                                                              owl:onProperty :EMMO_67fc0a36_8dcb_4ffa_9a43_31074efa3296 ;
                                                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                              owl:onClass :EMMO_18ce5200_00f5_45bb_8c6f_6fb128cd41ae
                                                            ] ;
-                                           owl:disjointUnionOf ( :EMMO_a9a6ddf8_7e16_420a_9f3d_df7d5cfe3536
-                                                                 :EMMO_dd4a7f3e_ef56_466c_ac1a_d2716b5f87ec
-                                                               ) ;
                                            skos:altLabel "Measurand"@en ;
                                            skos:example """length
 Rockwell C hardness
 electric resistance"""@en ;
                                            skos:prefLabel "Quantity"@en ;
                                            :EMMO_1f1b164d_ec6a_4faa_8d5e_88bda62316cc "https://qudt.org/schema/qudt/Quantity"^^xsd:anyURI ;
+                                           :EMMO_8a137e9f_579c_4e28_baca_e8980eb0c3db "DisjointUnionOf: SubjectiveProperty, ObjectiveProperty" ,
+                                                                                      "EquivalentTo: PhysicalQuantity or OrdinalQuantity" ;
                                            :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "A quantifiable property of a phenomenon, body, or substance."@en ;
                                            :EMMO_bb49844b_45d7_4f0d_8cae_8e552cbc20d6 "measurand"@en ,
                                                                                       "quantity"@en ;
@@ -318,11 +413,13 @@ A quantity in EMMO is a property and therefore only addresses the first part of 
 
 ###  https://w3id.org/emmo#EMMO_08b308d4_31cd_4779_a784_aa92fc730f39
 :EMMO_08b308d4_31cd_4779_a784_aa92fc730f39 rdf:type owl:Class ;
+                                           rdfs:subClassOf :EMMO_b081b346_7279_46ef_9a3d_2c088fcd79f4 ;
                                            skos:prefLabel "DerivedUnit"@en ;
-                                           :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Derived units are defined as products of powers of the base units corresponding to the relations defining the derived quantities in terms of the base quantities."@en ;
+                                           :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Derived units are defined as a numerical factor times the products of powers of the base units corresponding to the relations defining the derived quantities in terms of the base quantities."@en ;
                                            :EMMO_bb49844b_45d7_4f0d_8cae_8e552cbc20d6 "derived unit"@en ;
                                            :EMMO_c7b62dd7_063a_4c2a_8504_42f7264ba83f """A measurement unit for a derived quantity.
--- VIM"""@en .
+-- VIM"""@en ,
+                                                                                      "When the numerical factor of this product is one, the derived units are called coherent derived units."@en .
 
 
 ###  https://w3id.org/emmo#EMMO_0f6f0120_c079_4d95_bb11_4ddee05e530e
@@ -330,12 +427,12 @@ A quantity in EMMO is a property and therefore only addresses the first part of 
                                            rdfs:subClassOf :EMMO_2a888cdf_ec4a_4ec5_af1c_0343372fc978 ,
                                                            [ rdf:type owl:Restriction ;
                                                              owl:onProperty :EMMO_5d73661e_e710_4844_ab9b_a85b7e68576a ;
-                                                             owl:someValuesFrom :EMMO_dd4a7f3e_ef56_466c_ac1a_d2716b5f87ec
+                                                             owl:someValuesFrom :EMMO_f658c301_ce93_46cf_9639_4eace2c5d1d5
                                                            ] ;
                                            skos:prefLabel "MeasurementResult"@en ;
                                            :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 """Result of a measurement.
 
-A set of quantites being attributed to a measurand (measured quantitative property) together with any other available relevant information, like measurement uncertainty.
+A set of quantity values being attributed to a measurand (quantity) together with any other available relevant information, like measurement uncertainty.
 
 -- VIM"""@en ;
                                            :EMMO_bb49844b_45d7_4f0d_8cae_8e552cbc20d6 "measurement result"@en ;
@@ -358,14 +455,9 @@ Unit of degeneracy in quantum mechanics"""@en ;
 
 ###  https://w3id.org/emmo#EMMO_18ce5200_00f5_45bb_8c6f_6fb128cd41ae
 :EMMO_18ce5200_00f5_45bb_8c6f_6fb128cd41ae rdf:type owl:Class ;
-                                           owl:equivalentClass [ rdf:type owl:Class ;
-                                                                 owl:unionOf ( :EMMO_acd1a504_ca32_4f30_86ad_0b62cea5bc02
-                                                                               :EMMO_b081b346_7279_46ef_9a3d_2c088fcd79f4
-                                                                               :EMMO_c9c8f824_9127_4f93_bc21_69fe78a7f6f2
-                                                                             )
-                                                               ] ;
                                            rdfs:subClassOf :EMMO_985bec21_989f_4b9e_a4b3_735d88099c3c ;
                                            skos:prefLabel "MetrologicalReference"@en ;
+                                           :EMMO_8a137e9f_579c_4e28_baca_e8980eb0c3db "EquivalentTo: StandardUnit or MeasurementUnit or ProcedureUnit" ;
                                            :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "A reference can be a measurement unit, a measurement procedure, a reference material, or a combination of such (VIM3 1.1 NOTE 2)."@en ;
                                            :EMMO_c7b62dd7_063a_4c2a_8504_42f7264ba83f """A symbolic is recognized as reference unit also if it is not part of a quantity (e.g. as in the sentence \"the Bq is the reference unit of Becquerel\").
 For this reason we can't declare the axiom:
@@ -381,16 +473,17 @@ This is peculiar to EMMO, where quantities as syntatic entities (explicit quanti
                                                                                     ) ;
                                                                  rdf:type owl:Class
                                                                ] ;
-                                           owl:disjointUnionOf ( :EMMO_3ee80521_3c23_4dd1_935d_9d522614a3e2
-                                                                 :EMMO_db716151_6b73_45ff_910c_d182fdcbb4f5
-                                                               ) ;
+                                           rdfs:subClassOf :EMMO_868ae137_4d25_493e_b270_21ea3d94849e ;
                                            skos:example "Some examples are \"Pa\", \"m\" and \"J\"."@en ;
                                            skos:prefLabel "UnitSymbol"@en ;
+                                           :EMMO_8a137e9f_579c_4e28_baca_e8980eb0c3db "DisjointUnionOf: SpecialUnit, BaseUnit" ;
                                            :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "A symbol that stands for a single unit."@en .
 
 
 ###  https://w3id.org/emmo#EMMO_3227b821_26a5_4c7c_9c01_5c24483e0bd0
 :EMMO_3227b821_26a5_4c7c_9c01_5c24483e0bd0 rdf:type owl:Class ;
+                                           rdfs:subClassOf :EMMO_611e4040_9a3e_4a1a_9fa2_7b1012269401 ;
+                                           owl:disjointWith :EMMO_cbdea88b_fef1_4c7c_b69f_ae1f0f241c4a ;
                                            skos:example """Refractive index
 Plane angle
 Number of apples"""@en ;
@@ -408,7 +501,9 @@ Number of apples"""@en ;
 
 ###  https://w3id.org/emmo#EMMO_3ee80521_3c23_4dd1_935d_9d522614a3e2
 :EMMO_3ee80521_3c23_4dd1_935d_9d522614a3e2 rdf:type owl:Class ;
-                                           rdfs:subClassOf :EMMO_08b308d4_31cd_4779_a784_aa92fc730f39 ;
+                                           rdfs:subClassOf :EMMO_08b308d4_31cd_4779_a784_aa92fc730f39 ,
+                                                           :EMMO_216f448e_cdbc_4aeb_a529_7a5fe7fc38bb ;
+                                           owl:disjointWith :EMMO_db716151_6b73_45ff_910c_d182fdcbb4f5 ;
                                            rdfs:comment "Special units are semiotic shortcuts to more complex composed symbolic objects."@en ;
                                            skos:example """Pa stands for N/m2
 J stands for N m"""@en ;
@@ -418,6 +513,8 @@ J stands for N m"""@en ;
 
 ###  https://w3id.org/emmo#EMMO_3f15d200_c97b_42c8_8ac0_d81d150361e2
 :EMMO_3f15d200_c97b_42c8_8ac0_d81d150361e2 rdf:type owl:Class ;
+                                           rdfs:subClassOf :EMMO_b953f2b1_c8d1_4dd9_b630_d3ef6580c2bb ;
+                                           owl:disjointWith :EMMO_89762966_8076_4f7c_b745_f718d653e8e2 ;
                                            skos:prefLabel "MeasuredConstant"@en ;
                                            :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "For a given unit system, measured constants are physical constants that are not used to define the unit system. Hence, these constants have to be measured and will therefore be associated with an uncertainty."@en .
 
@@ -437,22 +534,33 @@ J stands for N m"""@en ;
                                            rdfs:subClassOf :EMMO_3b19eab4_79be_4b02_bdaf_ecf1f0067a68 ,
                                                            :EMMO_472a0ca2_58bf_4618_b561_6fe68bd9fd49 ,
                                                            [ rdf:type owl:Restriction ;
-                                                             owl:onProperty :EMMO_35c29eb6_f57e_48d8_85af_854f9e926e77 ;
-                                                             owl:someValuesFrom :EMMO_0f6f0120_c079_4d95_bb11_4ddee05e530e
+                                                             owl:onProperty :EMMO_802b7639_9498_4b47_ad45_1a087fe8fb85 ;
+                                                             owl:someValuesFrom :EMMO_0650c031_42b6_4f0a_b62d_d88f071da6bf
                                                            ] ,
                                                            [ rdf:type owl:Restriction ;
-                                                             owl:onProperty :EMMO_35c29eb6_f57e_48d8_85af_854f9e926e77 ;
-                                                             owl:someValuesFrom :EMMO_7dea2572_ab42_45bd_9fd7_92448cec762a
+                                                             owl:onProperty :EMMO_963b7cf2_3358_463e_86fa_2e8ef00704d9 ;
+                                                             owl:someValuesFrom :EMMO_f658c301_ce93_46cf_9639_4eace2c5d1d5
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :EMMO_ae081613_1d3a_49af_ba03_7195fcc9ebba ;
+                                                             owl:someValuesFrom :EMMO_6f5af708_f825_4feb_a0d1_a8d813d3022b
                                                            ] ,
                                                            [ rdf:type owl:Restriction ;
                                                              owl:onProperty :EMMO_c4bace1d_4db0_4cd3_87e9_18122bae2840 ;
                                                              owl:someValuesFrom :EMMO_0f6f0120_c079_4d95_bb11_4ddee05e530e
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :EMMO_cb804456_9459_4be5_ac63_a291a872fbd0 ;
+                                                             owl:someValuesFrom :EMMO_7dea2572_ab42_45bd_9fd7_92448cec762a
                                                            ] ;
                                            rdfs:comment "A measurement always implies a causal interaction between the object and the observer."@en ,
                                                         "A measurement is the process of experimentally obtaining one or more measurement results that can reasonably be attributed to a quantity."@en ;
+                                           skos:altLabel "MeasurementProcedure"@en ;
                                            skos:prefLabel "Measurement"@en ;
                                            :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "An 'observation' that results in a quantitative comparison of a 'property' of an 'object' with a standard reference based on a well defined mesurement procedure."@en ;
-                                           :EMMO_bb49844b_45d7_4f0d_8cae_8e552cbc20d6 "measurement"@en .
+                                           :EMMO_bb49844b_45d7_4f0d_8cae_8e552cbc20d6 "measurement"@en ;
+                                           :EMMO_c7b62dd7_063a_4c2a_8504_42f7264ba83f "For convinience, the semiotic shortcuts `hasMeasurementValue` and `hasMeasurementQuantity` allows the user to directly relate a measurement to the measured QuantityValue and Quantity, respectively."@en ,
+                                                                                      "The output of a measurement is in EMMO a measurement result, which in turn is attributed to one or more measurement values."@en .
 
 [ rdf:type owl:Axiom ;
    owl:annotatedSource :EMMO_463bcfda_867b_41d9_a967_211d4d437cfb ;
@@ -460,6 +568,14 @@ J stands for N m"""@en ;
    owl:annotatedTarget "A measurement is the process of experimentally obtaining one or more measurement results that can reasonably be attributed to a quantity."@en ;
    rdfs:isDefinedBy "https://www.iso.org/standard/45324.html"^^xsd:anyURI
  ] .
+
+
+###  https://w3id.org/emmo#EMMO_4b965242_29f0_4e42_a4b6_f8a5988052df
+:EMMO_4b965242_29f0_4e42_a4b6_f8a5988052df rdf:type owl:Class ;
+                                           rdfs:subClassOf :EMMO_b081b346_7279_46ef_9a3d_2c088fcd79f4 ;
+                                           skos:prefLabel "MeasurementUnitByPrefix"@en ;
+                                           :EMMO_8a137e9f_579c_4e28_baca_e8980eb0c3db "EquivalentTo: PrefixedUnit or NonPrefixedUnit" ;
+                                           :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Categorisation of measurement units by whether they are prefixed or not."@en .
 
 
 ###  https://w3id.org/emmo#EMMO_50a3552e_859a_4ff7_946d_76d537cabce6
@@ -493,8 +609,18 @@ J stands for N m"""@en ;
 -- SI Brochure"""@en .
 
 
+###  https://w3id.org/emmo#EMMO_611e4040_9a3e_4a1a_9fa2_7b1012269401
+:EMMO_611e4040_9a3e_4a1a_9fa2_7b1012269401 rdf:type owl:Class ;
+                                           rdfs:subClassOf :EMMO_b081b346_7279_46ef_9a3d_2c088fcd79f4 ;
+                                           skos:prefLabel "MeasurementUnitByDimensionality"@en ;
+                                           :EMMO_8a137e9f_579c_4e28_baca_e8980eb0c3db "EquivalentTo: DimensionalUnit or DimensionlessUnit" ;
+                                           :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Categorisation of measurement units by their physical dimensionality."@en .
+
+
 ###  https://w3id.org/emmo#EMMO_71f6ab56_342c_484b_bbe0_de86b7367cb3
 :EMMO_71f6ab56_342c_484b_bbe0_de86b7367cb3 rdf:type owl:Class ;
+                                           rdfs:subClassOf :EMMO_9159bb16_8a70_49f9_bac4_f5cf2a82c39a ;
+                                           owl:disjointWith :EMMO_acaaa124_3dde_48b6_86e6_6ec6f364f408 ;
                                            skos:prefLabel "DerivedQuantity"@en ;
                                            :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "\"Quantity, in a system of quantities, defined in terms of the base quantities of that system\"."@en ;
                                            :EMMO_bb49844b_45d7_4f0d_8cae_8e552cbc20d6 "derived quantity"@en .
@@ -507,7 +633,6 @@ J stands for N m"""@en ;
                                                                                     ) ;
                                                                  rdf:type owl:Class
                                                                ] ;
-                                           rdfs:subClassOf :EMMO_89a0c87c_0804_4013_937a_6fe234d9499c ;
                                            skos:prefLabel "MetrologicalConstruct"@en ;
                                            :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "A symbolic construct used within the discipline of metrology."@en .
 
@@ -536,7 +661,12 @@ J stands for N m"""@en ;
 
 ###  https://w3id.org/emmo#EMMO_847724b7_acef_490e_9f0d_67da967f2812
 :EMMO_847724b7_acef_490e_9f0d_67da967f2812 rdf:type owl:Class ;
-                                           rdfs:subClassOf :EMMO_dd4a7f3e_ef56_466c_ac1a_d2716b5f87ec ;
+                                           rdfs:subClassOf :EMMO_dd4a7f3e_ef56_466c_ac1a_d2716b5f87ec ,
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty [ owl:inverseOf :EMMO_662c64e7_fc72_49b3_a161_f50fd42deafa
+                                                                            ] ;
+                                                             owl:someValuesFrom :EMMO_f658c301_ce93_46cf_9639_4eace2c5d1d5
+                                                           ] ;
                                            rdfs:comment "In general, for a given set of information, it is understood that the measurement uncertainty is associated with a stated quantity value. A modification of this value results in a modification of the associated uncertainty."@en ,
                                                         "Metrological uncertainty includes components arising from systematic effects, such as components associated with corrections and the assigned quantity values of measurement standards, as well as the definitional uncertainty. Sometimes estimated systematic effects are not corrected for but, instead, associated measurement uncertainty components are incorporated."@en ;
                                            skos:altLabel "A metrological uncertainty can be assigned to any objective property via the 'hasMetrologicalUncertainty' relation." ;
@@ -549,12 +679,10 @@ J stands for N m"""@en ;
 
 ###  https://w3id.org/emmo#EMMO_868ae137_4d25_493e_b270_21ea3d94849e
 :EMMO_868ae137_4d25_493e_b270_21ea3d94849e rdf:type owl:Class ;
-                                           owl:equivalentClass [ rdf:type owl:Class ;
-                                                                 owl:unionOf ( :EMMO_08b308d4_31cd_4779_a784_aa92fc730f39
-                                                                               :EMMO_216f448e_cdbc_4aeb_a529_7a5fe7fc38bb
-                                                                             )
-                                                               ] ;
+                                           rdfs:subClassOf :EMMO_4b965242_29f0_4e42_a4b6_f8a5988052df ;
+                                           owl:disjointWith :EMMO_c6d4a5e0_7e95_44df_a6db_84ee0a8bbc8e ;
                                            skos:prefLabel "NonPrefixedUnit"@en ;
+                                           :EMMO_8a137e9f_579c_4e28_baca_e8980eb0c3db "EquivalentTo: DerivedUnit or UnitSymbol" ;
                                            :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "A measurement unit symbol that do not have a metric prefix as a direct spatial part."@en .
 
 
@@ -570,6 +698,7 @@ J stands for N m"""@en ;
 
 ###  https://w3id.org/emmo#EMMO_89762966_8076_4f7c_b745_f718d653e8e2
 :EMMO_89762966_8076_4f7c_b745_f718d653e8e2 rdf:type owl:Class ;
+                                           rdfs:subClassOf :EMMO_b953f2b1_c8d1_4dd9_b630_d3ef6580c2bb ;
                                            skos:prefLabel "ExactConstant"@en ;
                                            :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Physical constant used to define a unit system. Hence, when expressed in that unit system they have an exact value with no associated uncertainty."@en .
 
@@ -590,6 +719,13 @@ Sex of a human being."""@en ;
                                            skos:prefLabel "NominalProperty"@en ;
                                            :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "An 'ObjectiveProperty' that cannot be quantified."@en ;
                                            :EMMO_bb49844b_45d7_4f0d_8cae_8e552cbc20d6 "nominal property"@en .
+
+
+###  https://w3id.org/emmo#EMMO_9159bb16_8a70_49f9_bac4_f5cf2a82c39a
+:EMMO_9159bb16_8a70_49f9_bac4_f5cf2a82c39a rdf:type owl:Class ;
+                                           rdfs:subClassOf :EMMO_02c0621e_a527_4790_8a0f_2bb51973c819 ;
+                                           skos:prefLabel "PhysicalQuantiyByDefinition"@en ;
+                                           :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Categorisation of physical quantities by how they are defined."@en .
 
 
 ###  https://w3id.org/emmo#EMMO_972e01b0_b017_4903_8c05_b7edda958723
@@ -629,7 +765,9 @@ It is advisory to create a uniquely defined subclass these units for concrete us
 
 ###  https://w3id.org/emmo#EMMO_a9a6ddf8_7e16_420a_9f3d_df7d5cfe3536
 :EMMO_a9a6ddf8_7e16_420a_9f3d_df7d5cfe3536 rdf:type owl:Class ;
-                                           rdfs:subClassOf :EMMO_251cfb4f_5c75_4778_91ed_6c8395212fd8 ;
+                                           rdfs:subClassOf :EMMO_251cfb4f_5c75_4778_91ed_6c8395212fd8 ,
+                                                           :EMMO_d9350951_5300_44e8_ae61_79fb7c53b7e7 ;
+                                           owl:disjointWith :EMMO_dd4a7f3e_ef56_466c_ac1a_d2716b5f87ec ;
                                            skos:example "The measure of beauty on a scale from 1 to 10."@en ;
                                            skos:prefLabel "SubjectiveProperty"@en ;
                                            :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "A quantity whos value that cannot be univocally determined and depends on an agent (e.g. a human individual, a community)."@en .
@@ -637,6 +775,7 @@ It is advisory to create a uniquely defined subclass these units for concrete us
 
 ###  https://w3id.org/emmo#EMMO_acaaa124_3dde_48b6_86e6_6ec6f364f408
 :EMMO_acaaa124_3dde_48b6_86e6_6ec6f364f408 rdf:type owl:Class ;
+                                           rdfs:subClassOf :EMMO_9159bb16_8a70_49f9_bac4_f5cf2a82c39a ;
                                            skos:prefLabel "BaseQuantity"@en ;
                                            :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 """\"Quantity in a conventionally chosen subset of a given system of quantities, where no quantity in the subset can be expressed in terms of the other quantities within that subset\"
 ISO 80000-1"""@en ;
@@ -645,6 +784,7 @@ ISO 80000-1"""@en ;
 
 ###  https://w3id.org/emmo#EMMO_acd1a504_ca32_4f30_86ad_0b62cea5bc02
 :EMMO_acd1a504_ca32_4f30_86ad_0b62cea5bc02 rdf:type owl:Class ;
+                                           rdfs:subClassOf :EMMO_18ce5200_00f5_45bb_8c6f_6fb128cd41ae ;
                                            skos:altLabel "ReferenceMaterial" ;
                                            skos:example "Arbitrary amount-of-substance concentration of lutropin in a given sample of plasma (WHO international standard 80/552): 5.0 International Unit/l"@en ;
                                            skos:prefLabel "StandardUnit"@en ;
@@ -654,17 +794,14 @@ International vocabulary of metrology (VIM)"""@en .
 
 ###  https://w3id.org/emmo#EMMO_b081b346_7279_46ef_9a3d_2c088fcd79f4
 :EMMO_b081b346_7279_46ef_9a3d_2c088fcd79f4 rdf:type owl:Class ;
+                                           rdfs:subClassOf :EMMO_18ce5200_00f5_45bb_8c6f_6fb128cd41ae ;
                                            owl:disjointWith :EMMO_c9c8f824_9127_4f93_bc21_69fe78a7f6f2 ;
-                                           owl:disjointUnionOf ( :EMMO_3227b821_26a5_4c7c_9c01_5c24483e0bd0
-                                                                 :EMMO_cbdea88b_fef1_4c7c_b69f_ae1f0f241c4a
-                                                               ) ,
-                                                               ( :EMMO_868ae137_4d25_493e_b270_21ea3d94849e
-                                                                 :EMMO_c6d4a5e0_7e95_44df_a6db_84ee0a8bbc8e
-                                                               ) ;
                                            skos:example """kg
 m/s
 km"""@en ;
                                            skos:prefLabel "MeasurementUnit"@en ;
+                                           :EMMO_8a137e9f_579c_4e28_baca_e8980eb0c3db "DisjointUnionOf: DimensionlessUnit, DimensionalUnit" ,
+                                                                                      "DisjointUnionOf: NonPrefixedUnit, PrefixedUnit" ;
                                            :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "A metrological reference for a physical quantity."@en ;
                                            :EMMO_bb49844b_45d7_4f0d_8cae_8e552cbc20d6 "measurement unit (VIM3 1.9)"@en ;
                                            :EMMO_c7b62dd7_063a_4c2a_8504_42f7264ba83f """\"Real scalar quantity, defined and adopted by convention, with which any other quantity of the same kind can be compared to express the ratio of the second quantity to the first one as a number\"
@@ -681,10 +818,8 @@ https://www.bipm.org/utils/common/pdf/si-brochure/SI-Brochure-9-EN.pdf"""@en ,
 ###  https://w3id.org/emmo#EMMO_b953f2b1_c8d1_4dd9_b630_d3ef6580c2bb
 :EMMO_b953f2b1_c8d1_4dd9_b630_d3ef6580c2bb rdf:type owl:Class ;
                                            rdfs:subClassOf :EMMO_02c0621e_a527_4790_8a0f_2bb51973c819 ;
-                                           owl:disjointUnionOf ( :EMMO_3f15d200_c97b_42c8_8ac0_d81d150361e2
-                                                                 :EMMO_89762966_8076_4f7c_b745_f718d653e8e2
-                                                               ) ;
                                            skos:prefLabel "PhysicalConstant"@en ;
+                                           :EMMO_8a137e9f_579c_4e28_baca_e8980eb0c3db "DisjointUnionOf: MeasuredConstant, ExactConstant" ;
                                            :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 """Physical constants are categorised into \"exact\" and measured constants.
 
 With \"exact\" constants, we refer to physical constants that have an exact numerical value after the revision of the SI system that was enforsed May 2019."""@en ;
@@ -704,6 +839,7 @@ is desirable (μm/m, nmol/mol).
 
 ###  https://w3id.org/emmo#EMMO_c46f091c_0420_4c1a_af30_0a2c8ebcf7d7
 :EMMO_c46f091c_0420_4c1a_af30_0a2c8ebcf7d7 rdf:type owl:Class ;
+                                           rdfs:subClassOf :EMMO_dbbbf0ed_a446_4f9e_877c_8c46e7842f43 ;
                                            rdfs:comment """\"Ordinal quantities, such as Rockwell C hardness, are usually not considered to be part of a system of quantities because they are related to other quantities through empirical relations only.\"
 International vocabulary of metrology (VIM)"""@en ;
                                            skos:example """Hardness
@@ -716,7 +852,8 @@ International vocabulary of metrology (VIM)"""@en ;
 
 ###  https://w3id.org/emmo#EMMO_c6d4a5e0_7e95_44df_a6db_84ee0a8bbc8e
 :EMMO_c6d4a5e0_7e95_44df_a6db_84ee0a8bbc8e rdf:type owl:Class ;
-                                           rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                           rdfs:subClassOf :EMMO_4b965242_29f0_4e42_a4b6_f8a5988052df ,
+                                                           [ rdf:type owl:Restriction ;
                                                              owl:onProperty :EMMO_4be0acad_af05_426f_aa6d_fe7531072564 ;
                                                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                              owl:onClass :EMMO_442bd91e_a724_4e9f_89c1_18423016fb75
@@ -732,6 +869,7 @@ International vocabulary of metrology (VIM)"""@en ;
 
 ###  https://w3id.org/emmo#EMMO_c9c8f824_9127_4f93_bc21_69fe78a7f6f2
 :EMMO_c9c8f824_9127_4f93_bc21_69fe78a7f6f2 rdf:type owl:Class ;
+                                           rdfs:subClassOf :EMMO_18ce5200_00f5_45bb_8c6f_6fb128cd41ae ;
                                            skos:altLabel "MeasurementProcedure" ;
                                            skos:example "Rockwell C hardness of a given sample (150 kg load): 43.5HRC(150 kg)"@en ;
                                            skos:prefLabel "ProcedureUnit"@en ;
@@ -741,6 +879,7 @@ International vocabulary of metrology (VIM)"""@en ;
 
 ###  https://w3id.org/emmo#EMMO_cbdea88b_fef1_4c7c_b69f_ae1f0f241c4a
 :EMMO_cbdea88b_fef1_4c7c_b69f_ae1f0f241c4a rdf:type owl:Class ;
+                                           rdfs:subClassOf :EMMO_611e4040_9a3e_4a1a_9fa2_7b1012269401 ;
                                            skos:prefLabel "DimensionalUnit"@en ;
                                            :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "A subclass of measurement unit focusing on the physical dimensionality that is carried by the unit."@en ;
                                            :EMMO_c7b62dd7_063a_4c2a_8504_42f7264ba83f """The current version of EMMO does not provide explicit classes for physical dimensions. Rather it embraces the fact that the physical dimensionality of a physical quantity is carried by its measurement unit.
@@ -778,15 +917,26 @@ Then I have two different physical quantities that are properties thanks to two 
                                            :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "A quantitative property attributed by agreement to a quantity for a given purpose."@en .
 
 
+###  https://w3id.org/emmo#EMMO_d9350951_5300_44e8_ae61_79fb7c53b7e7
+:EMMO_d9350951_5300_44e8_ae61_79fb7c53b7e7 rdf:type owl:Class ;
+                                           rdfs:subClassOf :EMMO_0650c031_42b6_4f0a_b62d_d88f071da6bf ;
+                                           skos:prefLabel "QuantityBySubjectivity"@en ;
+                                           :EMMO_8a137e9f_579c_4e28_baca_e8980eb0c3db "EquivalentTo: ObjectiveProperty or SubjectiveProperty" ;
+                                           :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Categorisation of quantities by whether they can be obtained fully objectively or not."@en .
+
+
 ###  https://w3id.org/emmo#EMMO_dabe353b_8bfc_4da7_8ac7_8f52786d16f8
 :EMMO_dabe353b_8bfc_4da7_8ac7_8f52786d16f8 rdf:type owl:Class ;
                                            rdfs:subClassOf :EMMO_9b87d718_9dcc_4f7d_ad20_12c2aa4c76be ;
-                                           skos:prefLabel "Assigned"@en .
+                                           skos:example "Input parameter to a model that has been assigned by a modeller (agent)."@en ;
+                                           skos:prefLabel "Assigned"@en ;
+                                           :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "An estimated that has been assigned by an agent."@en .
 
 
 ###  https://w3id.org/emmo#EMMO_db716151_6b73_45ff_910c_d182fdcbb4f5
 :EMMO_db716151_6b73_45ff_910c_d182fdcbb4f5 rdf:type owl:Class ;
-                                           rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                           rdfs:subClassOf :EMMO_216f448e_cdbc_4aeb_a529_7a5fe7fc38bb ,
+                                                           [ rdf:type owl:Restriction ;
                                                              owl:onProperty [ owl:inverseOf :EMMO_67fc0a36_8dcb_4ffa_9a43_31074efa3296
                                                                             ] ;
                                                              owl:allValuesFrom :EMMO_acaaa124_3dde_48b6_86e6_6ec6f364f408
@@ -796,9 +946,18 @@ Then I have two different physical quantities that are properties thanks to two 
                                            :EMMO_bb49844b_45d7_4f0d_8cae_8e552cbc20d6 "base unit"@en .
 
 
+###  https://w3id.org/emmo#EMMO_dbbbf0ed_a446_4f9e_877c_8c46e7842f43
+:EMMO_dbbbf0ed_a446_4f9e_877c_8c46e7842f43 rdf:type owl:Class ;
+                                           rdfs:subClassOf :EMMO_0650c031_42b6_4f0a_b62d_d88f071da6bf ;
+                                           skos:hiddenLabel "QuantityByPhysical"@en ;
+                                           skos:prefLabel "QuantityByPhysicalNature"@en ;
+                                           :EMMO_967080e5_2f42_4eb2_a3a9_c58143e835f9 "Categorisation of quantities by their physical nature."@en .
+
+
 ###  https://w3id.org/emmo#EMMO_dd4a7f3e_ef56_466c_ac1a_d2716b5f87ec
 :EMMO_dd4a7f3e_ef56_466c_ac1a_d2716b5f87ec rdf:type owl:Class ;
-                                           rdfs:subClassOf :EMMO_2a888cdf_ec4a_4ec5_af1c_0343372fc978 ;
+                                           rdfs:subClassOf :EMMO_2a888cdf_ec4a_4ec5_af1c_0343372fc978 ,
+                                                           :EMMO_d9350951_5300_44e8_ae61_79fb7c53b7e7 ;
                                            rdfs:comment "Subclasses of 'ObjectiveProperty' classify objects according to the type semiosis that is used to connect the property to the object (e.g. by measurement, by convention, by modelling)."@en ;
                                            skos:altLabel "PhysicalProperty"@en ,
                                                          "QuantitativeProperty"@en ;
@@ -832,6 +991,10 @@ This class refers to what is commonly known as physical property, i.e. a measura
 :EMMO_f658c301_ce93_46cf_9639_4eace2c5d1d5 rdf:type owl:Class ;
                                            rdfs:subClassOf :EMMO_985bec21_989f_4b9e_a4b3_735d88099c3c ,
                                                            [ rdf:type owl:Restriction ;
+                                                             owl:onProperty :EMMO_a97351bc_1b1b_4157_95b7_0a60ac56b8e2 ;
+                                                             owl:someValuesFrom :EMMO_0650c031_42b6_4f0a_b62d_d88f071da6bf
+                                                           ] ,
+                                                           [ rdf:type owl:Restriction ;
                                                              owl:onProperty :EMMO_8ef3cd6d_ae58_4a8d_9fc0_ad8f49015cd0 ;
                                                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                              owl:onClass :EMMO_4ce76d7f_03f8_45b6_9003_90052a79bfaa
@@ -857,4 +1020,4 @@ While the string \"1 kg\" is a 'QuantityValue'."""@en ;
                                            :EMMO_c7b62dd7_063a_4c2a_8504_42f7264ba83f "A quantity value is not necessarily a property, since it is possible to write \"10 kg\", without assigning this quantity to a specific object."@en .
 
 
-###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
